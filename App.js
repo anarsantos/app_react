@@ -3,12 +3,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import Page from './views/Page';
 
 export default function App() {
+  const props={
+    empresa:'Webdesign em Foco',
+    name:'Thiago'
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Page empresa='Webdesign' /> 
-      <Page empresa='Programação' />
-      <Page empresa='Devs' />     
+      <Text>Open up App.js to start working on your app!</Text>      
+      <Page {...props} />
+      {/*<Page empresa='Programação' />
+      <Page empresa='Devs' />*/}
     </View>
   );
 }
