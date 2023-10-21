@@ -1,33 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import { Text, View, Button, Alert } from 'react-native';
 import { css } from './assets/css/Css';
-import Page from './views/Page';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './views/Home';
+import Login from './views/Login';
 
 export default function App() {
-  const [product, setProduct] = useState('bola');
-  const [quantity, setQuantity] = useState(0);
 
-  useEffect(()=>{
-    if(quantity > 0) {
-      Alert.alert('Novo produto adicionado!');
-    }
-  }, [quantity]);
-
-  const props={
-    empresa:'Webdesign em Foco',
-    name:'Thiago',
-    produto: product,
-    quantidade: quantity
-  };
-
+  const Stack = createNativeStackNavigator();
+  
   return (
-    <View style={css.container}>
-      <Text>{product}</Text>            
-      <Page {...props} />
-      <Button title='Acicionar produtos' onPress={()=>setQuantity(quantity + 1)} />
-      {/*<Page empresa='Programação' />
-      <Page empresa='Devs' />*/}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
